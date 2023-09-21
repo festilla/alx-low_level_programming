@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(void)
+include "main.h"
 {
 		int n;
 		int a[5];
