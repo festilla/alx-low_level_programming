@@ -1,40 +1,37 @@
 #include "main.h"
 #include <stdlib.h>
 /**
-* argstostr - Concatenate an array of strings into a single string.
-* @ac: The number of strings in the array.
-* @av: The array of strings.
-*
-* Return: A pointer to the concatenated string, or NULL.
+* argstostr - main entry
+* @ac: int input
+* @av: double pointer array
+* Return: 0
 */
 char *argstostr(int ac, char **av)
 {
-int i, n, total_length = 0, index = 0;
-char *result;
+int i, n, r = 0, l = 0;
+char *str;
 if (ac == 0 || av == NULL)
 return (NULL);
 for (i = 0; i < ac; i++)
 {
 for (n = 0; av[i][n]; n++)
-{
-total_length++;
+l++;
 }
-}
-total_length += ac;
-result = malloc(sizeof(char) * (total_length + 1));
-if (result == NULL)
+l += ac;
+str = malloc(sizeof(char) * l + 1);
+if (str == NULL)
 return (NULL);
 for (i = 0; i < ac; i++)
 {
 for (n = 0; av[i][n]; n++)
 {
-result[index++] = av[i][n];
+str[r] = av[i][n];
+r++;
 }
-if (i < ac - 1)
+if (str[r] == '\0')
 {
-result[index++] = '\n';
+str[r++] = '\n';
 }
 }
-result[index] = '\0';
-return (result);
+return (str);
 }
